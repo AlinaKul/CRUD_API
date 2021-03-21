@@ -4,11 +4,11 @@ const getOpt = {
             200: {
                 type: 'object',
                 properties: {
-                    _id: { type: 'number' },
+                    _id: { type: 'integer' },
                     model: { type: 'string' },
-                    yearOfManufacturing: { type: 'number' },
-                    lastMaintenanceDate: { type: 'string' },
-                    isActive: { type: 'boolean' }
+                    yearOfManufacturing: { type: 'integer' },
+                    lastMaintenanceDate: { type: 'integer' },
+                    isActive: { type: 'integer' }
                     
                 }
             }
@@ -24,11 +24,11 @@ const getOpts= {
                 items: {
                     type: 'object',
                     properties: {
-                        id: { type: 'number' },
+                        id: { type: 'integer' },
                         model: { type: 'string' },
-                        yearOfManufacturing: { type: 'number' },
-                        lastMaintenanceDate: { type: 'string' },
-                        isActive: { type: 'boolean' }
+                        yearOfManufacturing: { type: 'integer' },
+                        lastMaintenanceDate: { type: 'integer' },
+                        isActive: { type: 'integer' }
                     }
                 }
             }
@@ -46,20 +46,20 @@ const postOpt = {
         body: {
             type: 'object',
             properties: {
-                yearOfManufacturing: { type: 'number' },
-                lastMaintenanceDate: { type: 'string' },
-                isActive: { type: 'boolean' }
+                yearOfManufacturing: { type: 'integer' },
+                lastMaintenanceDate: { type: 'integer' },
+                isActive: { type: 'integer' }
             }
         },
         response: {
             200: {
                 type: 'object',
                 properties: {
-                    _id: { type: 'number' },
-                    model: { type: 'string'},
-                    yearOfManufacturing: { type: 'number' },
+                    id: { type: 'integer' },
+                    model: { type: 'string' },
+                    yearOfManufacturing: { type: 'string' },
                     lastMaintenanceDate: { type: 'string' },
-                    isActive: { type: 'boolean' }
+                    isActive: { type: 'integer' }
                 }
             }
         }
@@ -73,7 +73,7 @@ const deleteOpt = {
 }
 
 function routes (fastify, options, done) {
-   /* const trainCollection = fastify.trains.db.collection('trains')*/
+   /*const trainCollection = fastify.trains.db.collection('trains')*/
 
     fastify.get('/', getOpt, async (request, reply) => {
         const trains = await trainCollection.find().toArray()
@@ -87,7 +87,7 @@ function routes (fastify, options, done) {
 
     fastify.post('/', postOpt, async (request, reply) => {
         const train = request.body
-        /* const result = await trainCollection.insert(trains)                    // fastify.trains.db.collection('todo') = todocollection kintamasis
+       /* const result = await trainCollection.insert(trains)                    // fastify.trains.db.collection('todo') = todocollection kintamasis
         const insertedTrain = result.ops[0]
         return insertedTrain */
     });
