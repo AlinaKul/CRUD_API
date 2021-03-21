@@ -1,6 +1,7 @@
 const fastify = require('fastify')({ logger: true });
 
-fastify.register(require('./plugin/routes'))
+/*fastify.register(require('./plugin/sqlite3'))*/
+fastify.register(require('./plugin/routes'), { prefix: '/trains'})
 
 const start = async () => {
     try {
